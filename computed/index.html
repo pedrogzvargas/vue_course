@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{ completeNameMethod() }} </p>
+
+        <p>{{ completeNameMethod() }}</p>
+
+        <p>{{ completeName }}</p>
+
+        <p>{{ completeName }}</p>
+    </div>
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                name: "Pedro",
+                sencondName: "Jesus",
+                lastName: "Gonzalez",
+                sencondLastName: "Vargas",
+                fullName: null
+            }, 
+            methods: {
+                completeNameMethod: function(){
+                    console.log("Llamando al metodo");
+                    let vm = this;
+                    return vm.fullName = "Pedro Jesus";
+                }
+            },
+            computed: {
+                completeName: function(){
+                    console.log("LLamando a la computed function")
+                    let vm = this;
+                    return `${vm.name} ${vm.sencondName} ${vm.lastName} ${vm.sencondLastName}`;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

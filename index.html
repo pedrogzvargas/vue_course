@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-once>{{ name }}</p>
+        <p>Hello {{name}} - <a v-bind:href="url" target="_blank">Google</a></p>
+        <p>{{ sayHello() }}</p>
+        <input type="text" v-on:input="changeName">
+        <p v-html="finishedUrl"></p>
+    </div>
+
+    <script src="https://unpkg.com/vue@2.6.11/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                name: "Pedro",
+                url: "http://www.google.com",
+                finishedUrl: '<a href="http://google.com" target="_blank">Google</<a>'
+            },
+            methods: {
+                changeName: function(event){
+                    this.name = event.target.value;
+                },
+                sayHello(){
+                    return "Hello World!";
+                    // return this.name; para llamar una variable
+                }
+            }
+        })
+        /***********
+        v-once es para poner la variable en su valos inicial y no actualizarla
+        */
+    </script>
+</body>
+</html>
